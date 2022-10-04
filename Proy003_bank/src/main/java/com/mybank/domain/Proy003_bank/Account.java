@@ -1,11 +1,6 @@
 package com.mybank.domain.Proy003_bank;
 
 
-/**
- * 
- * @author khrixthian
- *
- */
 public class Account {
 
 	private double balance;
