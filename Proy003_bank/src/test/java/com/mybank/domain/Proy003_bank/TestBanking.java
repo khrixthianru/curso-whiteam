@@ -1,5 +1,7 @@
 package com.mybank.domain.Proy003_bank;
 
+import java.util.Date;
+
 public class TestBanking {
 
 	public static void main(String[] args) {
@@ -16,6 +18,19 @@ public class TestBanking {
 		a1.withdraw(400);
 		System.out.println("intento sacar 400 y no puedo por que me quedan " + a1.getBalance());
 
+		//pruebas modulo 4 begoña
+		Pedido p = new Pedido(1);
+		
+		p.setCantidad(10);
+		p.setIdPedido(45);
+		p.setFechaPedido(new Date());
+		p.setObservaciones("urgente");
+		
+		System.out.println(p);
+		
+		Pedido p3 = p;
+		System.out.println(p3.toString());
+		
 	}
 
 }
