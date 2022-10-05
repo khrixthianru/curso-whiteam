@@ -1,20 +1,20 @@
 package Proy004_Expendedora.maquina;
 
-public class CajaRegistradora {
+public class Moneda {
 
 	private int moneda; //id de la moneda
 	private int cantidad;
 	private boolean vacio;
 	
 	// constructores
-	public CajaRegistradora(int moneda, int cantidad, boolean vacio) {
+	public Moneda(int moneda, int cantidad, boolean vacio) {
 		super();
 		this.moneda = moneda;
 		this.cantidad = cantidad;
 		this.vacio = vacio;
 	}
 
-	public CajaRegistradora(int moneda, int cantidad) {
+	public Moneda(int moneda, int cantidad) {
 		this(moneda, cantidad, true);
 		this.moneda = moneda;
 		this.cantidad = cantidad;
