@@ -34,6 +34,24 @@ public class Refresco {
 	public String getSabor() {
 		return sabor;
 	}
+	public double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	public boolean isAgotado() {
+		return agotado;
+	}
+	public void setAgotado(boolean agotado) {
+		this.agotado = agotado;
+	}
 	
 	
 	
