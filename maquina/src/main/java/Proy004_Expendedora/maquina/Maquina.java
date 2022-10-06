@@ -87,36 +87,47 @@ public class Maquina {
 		// String respuesta = "La vuelta es de ";
 		for(int x=0;x<r1.size();x++) {
 			  if(bebida == r1.get(x).getSabor()) {
-				  r1.get(x).setStock(r1.get(x).getStock()-1);
 				  vuelta = (paga * 100) - (r1.get(x).getPrecio() * 100);
+				  if(vuelta<0) {
+					  System.out.println("Importe insuficiente");
+				  }else {
+					  r1.get(x).setStock(r1.get(x).getStock()-1);
+				  }
 			  }
 			}
 		
-		for(int i=0;i<m1.size();i++) {
-			if(m1.get(i).getMoneda() == 100 && vuelta >= 100) {
-				m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
-				vuelta -= 100;
-			//		respuesta += "1€ ";
-			}else if(m1.get(i).getMoneda() == 50 && vuelta >= 50.0) {
-				m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
-				vuelta -= 50;
-			//		respuesta += " 50cts ";
-			}else if(m1.get(i).getMoneda() == 20 && vuelta >= 20) {
-				m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
-				vuelta -= 20;
-			//		respuesta += " 20cts ";
-			}else if(m1.get(i).getMoneda() == 10 && vuelta >= 10) {
-				m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
-				vuelta -= 10;
-			//	respuesta += " 10cts ";
-			}else {
-				m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
-				vuelta -= 5;
-			//	respuesta += " 5cts ";
+		for(int i=m1.size();i<0;i--) {
+			if(vuelta>0) {
+				if(m1.get(i).getMoneda() == 100 && vuelta >= 100) {
+					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
+					vuelta -= 100;
+				//		respuesta += "1€ ";
+				}else if(m1.get(i).getMoneda() == 50 && vuelta >= 50.0) {
+					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
+					vuelta -= 50;
+				//		respuesta += " 50cts ";
+				}else if(m1.get(i).getMoneda() == 20 && vuelta >= 20) {
+					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
+					vuelta -= 20;
+				//		respuesta += " 20cts ";
+				}else if(m1.get(i).getMoneda() == 10 && vuelta >= 10.0) {
+					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
+					vuelta -= 10;
+				//	respuesta += " 10cts ";
+				}else {
+					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
+					vuelta -= 5;
+				//	respuesta += " 5cts ";
+				}
 			}
 		}
 		
-		return "La vuelta es de " + (vuelta / 100) + " Euros.";
+		if(vuelta>0) {
+			return "La vuelta es de " + (vuelta / 100) + " Euros.";
+		}else {
+			return "";
+		}
+		
 	}
 	
 	

@@ -10,7 +10,7 @@ public class Pruebas {
 		System.out.println(m1.getM1().size() + " tipos de monedas");
 		
 		
-		System.out.println(m1.venderRefresco("Limon", 2));
+		System.out.println(m1.venderRefresco("Cola", 1.9));
 
 	}
 
