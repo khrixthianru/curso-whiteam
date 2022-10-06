@@ -6,6 +6,7 @@ public class Maquina {
 	
 	static ArrayList<Refresco> r1 = new ArrayList<Refresco>();
 	static ArrayList<Moneda> m1 = new ArrayList<Moneda>();
+	private static int refrescosVendidos;
 	
 	//constructor
 	public Maquina(ArrayList<Refresco> r1, ArrayList<Moneda> m1) {
@@ -84,6 +85,7 @@ public class Maquina {
 	
 	public String venderRefresco(String bebida, double paga) {
 		double vuelta = 0;
+		refrescosVendidos ++;
 		// String respuesta = "La vuelta es de ";
 		for(int x=0;x<r1.size();x++) {
 			  if(bebida == r1.get(x).getSabor()) {
@@ -128,6 +130,23 @@ public class Maquina {
 			return "";
 		}
 		
+	}
+	
+	public static void informeRefrescos() {
+		System.out.println("\nSe han vendido "+ refrescosVendidos + " en total.\n"
+				+ "Quedan:\n");
+		for(Refresco r : r1) {
+			System.out.println(
+					 r.getStock() +" de " + r.getSabor() +".\n"
+					 );
+		}
+	}
+	
+	public static void informeMonedas() {
+		System.out.println("Quedan:");
+		for(Moneda m : m1) {
+			System.out.println(m.getCantidad() + " monedas de " + m.getMoneda());
+		}
 	}
 	
 	
