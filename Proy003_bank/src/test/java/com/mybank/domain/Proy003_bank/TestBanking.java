@@ -18,19 +18,32 @@ public class TestBanking {
 		a1.withdraw(400);
 		System.out.println("intento sacar 400 y no puedo por que me quedan " + a1.getBalance());
 
-		//pruebas modulo 4 begoña
-		Pedido p = new Pedido(1);
 		
-		p.setCantidad(10);
-		p.setIdPedido(45);
-		p.setFechaPedido(new Date());
-		p.setObservaciones("urgente");
 		
-		System.out.println(p);
 		
-		Pedido p3 = p;
-		System.out.println(p3.toString());
+		//practica 5 bank
 		
+		Bank b = new Bank();
+		b.anyadirCliente("Juan", "Castillo");
+		b.anyadirCliente("Pedro", "Perez");
+		b.anyadirCliente("Maria", "Juana");
+		b.anyadirCliente("Raquel", "Ilich");
+		
+		pintarClientes(b);
+		
+		b.deleteCustomer(3);
+		
+		pintarClientes(b);
+		
+	}
+	
+	public static void pintarClientes(Bank b) {
+		for(Customer c : b.getClientes()) {
+			if (c != null) {
+				System.out.println(c.toString());
+			}
+		}
+		System.out.println("Hay " + b.getNumClientes() + " clientes en el banco.");
 	}
 
 }
