@@ -31,7 +31,7 @@ public class TestBanking {
 		
 		pintarClientes(b);
 		
-		b.deleteCustomer(3);
+		b.deleteCustomer(2);
 		
 		pintarClientes(b);
 		
@@ -44,6 +44,11 @@ public class TestBanking {
 			}
 		}
 		System.out.println("Hay " + b.getNumClientes() + " clientes en el banco.");
+	
+		
+		
+		
+	
 	}
 
 }
