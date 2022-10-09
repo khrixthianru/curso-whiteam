@@ -88,26 +88,27 @@ public class Makina {
 	}
 	
 	public String venderRefrescoSiHay(String bebida, double paga) {
-		double vuelta = 0;		
+		double vuelta = 0;	
+		String respAuxiliar = vuelta + "";
 		
 		for(int x=0;x<r1.size();x++) {
-			 if(vuelta<0) {
+			String sabor = r1.get(x).getSabor();
+			 if(sabor == bebida && r1.get(x).getPrecio()> paga) {
 				  System.out.println("Importe insuficiente");
-				  break;
-			  }else if(r1.get(x).getStock()<1) {
+				  respAuxiliar = "Importe insuficiente";
+			  }else if(r1.get(x).getSabor() == bebida && r1.get(x).getStock()<1) {
 				  System.out.println("Producto agotado");
-				  break;
-			  }else if(r1.get(x).getSabor() == bebida) {
+				  respAuxiliar = "Producto agotado";
+			  }else if(r1.get(x).getSabor() == bebida && r1.get(x).getStock()>1) {
 				  refrescosVendidos ++;
 				  caja += paga;
 				  vuelta = (paga * 100) - (r1.get(x).getPrecio() * 100);
 				  r1.get(x).setStock(r1.get(x).getStock()-1);
-				  
+				  respAuxiliar = vuelta + "";
 			  }
 			  
 			}
-		
-		return vuelta +"";
+		return respAuxiliar;
 	}
 	
 	//este me hace petar la vuelta, me devuelve negativo
@@ -173,7 +174,7 @@ public class Makina {
 		String respuesta;
 		respuesta = "Quedan:";
 		for(Moneda m : m1) {
-			respuesta += m.getCantidad() + " monedas de " + m.getMoneda();
+			respuesta += m.getCantidad() + " monedas de " + m.getMoneda() + ".\n";
 		}
 		System.out.println("TOTAL EN CAJA: " + caja + "€.");
 		

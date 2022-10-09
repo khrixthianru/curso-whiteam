@@ -77,7 +77,9 @@ public class MakinaTest {
 		String resul = m.venderRefrescoSiHay(bebida, paga);
 		
 		// comparacion
-		if(espero == resul) System.out.println("OK");
+		if(espero == resul) {
+			System.out.println("OK, importe insuficiente");
+		}
 	}
 
 	@Test

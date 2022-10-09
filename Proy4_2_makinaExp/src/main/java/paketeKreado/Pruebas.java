@@ -10,11 +10,13 @@ public class Pruebas {
 		System.out.println(m1.getM1().size() + " tipos de monedas");		
 		
 //		System.out.print(m1.venderRefresco("Cola", 1.9));
-		System.out.print(m1.devolverVuelta(m1.venderRefrescoSiHay("Naranja", 1.5)));
+		System.out.print(m1.devolverVuelta(m1.venderRefrescoSiHay("Naranja", 2)));
 	//			System.out.print(m1.venderRefresco("Limon", 1.7));
 	//		System.out.print(m1.venderRefresco("Agua", 2));
-		m1.informeRefrescos();
-		m1.informeMonedas();
+		
+		System.out.println(m1.informeRefrescos());
+		System.out.println(m1.informeMonedas());
+		
 
 	}
 
