@@ -86,12 +86,58 @@ public class Maquina {
 		}
 	}
 	
-	public String venderRefresco(String bebida, double paga) {
-		double vuelta = 0;
-		double vueltaReal;		
+//	public String venderRefresco(String bebida, double paga) {
+//		double vuelta = 0;
+//		double vueltaReal;		
+//		
+//		for(int x=0;x<r1.size();x++) {
+//			  if(bebida == r1.get(x).getSabor() && r1.get(x).getStock()>1) {
+//					refrescosVendidos ++;
+//					caja += paga;
+//				  vuelta = (paga * 100) - (r1.get(x).getPrecio() * 100);
+//				  if(vuelta<0) {
+//					  System.out.println("Importe insuficiente");
+//				  }else {
+//					  r1.get(x).setStock(r1.get(x).getStock()-1);
+//				  }
+//			  }
+//			}
+//		
+//		vueltaReal = vuelta;
+//		for(int i=m1.size()-1;i>=0;i--) {
+//			if(m1.get(i).getCantidad()<=0) {
+//				System.out.println("--------------------------\nNO DEVUELVE MONEDAS DE" + m1.get(i).getMoneda() +
+//						"\n--------------------------");
+//			}
+//			if(vuelta>0) {
+//				if(m1.get(i).getMoneda() == 100 && vuelta >= 100 && m1.get(i).getCantidad() > 0) {
+//					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
+//					vuelta -= 100;
+//				}else if(m1.get(i).getMoneda() == 50 && vuelta >= 50.0 && m1.get(i).getCantidad() > 0) {
+//					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
+//					vuelta -= 50;
+//				}else if(m1.get(i).getMoneda() == 20 && vuelta >= 20 && m1.get(i).getCantidad() > 0) {
+//					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
+//					vuelta -= 20;
+//				}else if(m1.get(i).getMoneda() == 10 && vuelta >= 10.0 && m1.get(i).getCantidad() > 0) {
+//					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
+//					vuelta -= 10;
+//				}else if(m1.get(i).getMoneda() == 5 && vuelta >= 5 && m1.get(i).getCantidad() > 0)  {
+//					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
+//					vuelta -= 5;
+//				}
+//			}
+//		}
+//		
+//		return "La vuelta es de " + (vueltaReal / 100) + " Euros.";
+//		
+//	}
+	
+	public double venderRefrescoSiHay(String bebida, double paga) {
+		double vuelta = 0;		
 		
 		for(int x=0;x<r1.size();x++) {
-			  if(bebida == r1.get(x).getSabor() && r1.get(x).getStock()>1) {
+			  if(bebida == r1.get(x).getSabor() && r1.get(x).getStock()>0) {
 					refrescosVendidos ++;
 					caja += paga;
 				  vuelta = (paga * 100) - (r1.get(x).getPrecio() * 100);
@@ -102,8 +148,13 @@ public class Maquina {
 				  }
 			  }
 			}
+		return vuelta;
+	}
+	
+	public String devolverVuelta(double vueltaReal) {
+		double vuelta = 0;
+		vuelta = vueltaReal;
 		
-		vueltaReal = vuelta;
 		for(int i=m1.size()-1;i>=0;i--) {
 			if(m1.get(i).getCantidad()<=0) {
 				System.out.println("--------------------------\nNO DEVUELVE MONEDAS DE" + m1.get(i).getMoneda() +
@@ -130,7 +181,6 @@ public class Maquina {
 		}
 		
 		return "La vuelta es de " + (vueltaReal / 100) + " Euros.";
-		
 	}
 	
 	public void informeRefrescos() {
