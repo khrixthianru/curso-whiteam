@@ -13,8 +13,8 @@ public class Gerente extends Empleado{
 		this.departamento = departamento;
 	}
 	
-	
-	
-	
+	public String getDetails() {
+		return "Nombre:" + nombre + "\n salario: " + salario + "\n gerente de: " + departamento;
+	}
 	
 }

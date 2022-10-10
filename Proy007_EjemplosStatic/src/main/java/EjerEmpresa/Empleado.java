@@ -9,7 +9,7 @@ public class Empleado {
 	public Date fechaNacimiento;
 	
 	public String getDetails() {
-		return nombre + " tiene salario" + salario;
+		return "Nombre:" + nombre + "\n salario: " + salario;
 	}
 	
 	//getter and setter
