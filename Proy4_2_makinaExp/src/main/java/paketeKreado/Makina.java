@@ -55,7 +55,7 @@ public class Makina {
 	
 	//recargar refrescos al ppio.
 	public static void cargarRefrescosPpio(){		
-		for(int i=0;i<1;i++) {
+		
 			Refresco r = new Refresco("Naranja",1.2);
 			r.setStock(100);
 			r1.add(r);	
@@ -68,12 +68,11 @@ public class Makina {
 			Refresco r4 = new Refresco("Agua",0.9);
 			r4.setStock(100);
 			r1.add(r4);	
-		}
+		
 	}
 
 	//recargar monedas al ppio.
 	public static void cargarMonedasPpio() {
-		for(int i=0;i<1;i++) {
 			Moneda m = new Moneda(5,100);//valor, cantidad
 			m1.add(m);
 			Moneda m2 = new Moneda(10,100);
@@ -84,7 +83,6 @@ public class Makina {
 			m1.add(m4);
 			Moneda m5 = new Moneda(100,100);
 			m1.add(m5);
-		}
 	}
 	
 	public String venderRefrescoSiHay(String bebida, double paga) {
@@ -94,6 +92,7 @@ public class Makina {
 		for(int x=0;x<r1.size();x++) {
 			String sabor = r1.get(x).getSabor();
 			 if(sabor == bebida && r1.get(x).getPrecio()> paga) {
+				 //aki poner un throw new RuntimeExpection("Importe insuficiente");
 				  System.out.println("Importe insuficiente");
 				  respAuxiliar = "Importe insuficiente";
 			  }else if(r1.get(x).getSabor() == bebida && r1.get(x).getStock()<1) {
@@ -108,6 +107,7 @@ public class Makina {
 			  }
 			  
 			}
+		//ke devuelva las vueltas en double
 		return respAuxiliar;
 	}
 	

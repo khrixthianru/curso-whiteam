@@ -3,7 +3,7 @@ package com.mybank.domain.Proy003_bank;
 
 public class Account {
 
-	private double balance;
+	protected double balance;
 
 	public Account(double balance) {
 		super();
@@ -29,4 +29,11 @@ public class Account {
 		return false;
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Account [balance=" + balance + "]";
+	}
+	
+	
 }

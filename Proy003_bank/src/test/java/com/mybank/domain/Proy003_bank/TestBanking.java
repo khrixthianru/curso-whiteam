@@ -8,7 +8,7 @@ public class TestBanking {
 		// TODO Auto-generated method stub
 		Customer c1 = new Customer("Fernandez", "Romero");
 		Account a1 = new Account(500);
-		c1.setAccount(a1);
+		c1.anyadirCuenta(a1);
 		a1.withdraw(150);
 		System.out.println("saco 150 y me quedan " + a1.getBalance());
 		a1.deposit(22.5);
@@ -35,6 +35,16 @@ public class TestBanking {
 		
 		pintarClientes(b);
 		
+		//practika 6-1
+		System.out.println("--------------------------------------------------------");
+		Customer c5 = new Customer("Fernandez", "Romero");
+		Account a5 = new Account(500);
+		Account a51 = new Account(1000);
+		c5.anyadirCuenta(a5);
+		c5.anyadirCuenta(a51);
+		c5.getAccount(1);
+		c5.numeroDeCuentas();
+		
 	}
 	
 	public static void pintarClientes(Bank b) {
@@ -44,11 +54,6 @@ public class TestBanking {
 			}
 		}
 		System.out.println("Hay " + b.getNumClientes() + " clientes en el banco.");
-	
-		
-		
-		
-	
 	}
 
 }
