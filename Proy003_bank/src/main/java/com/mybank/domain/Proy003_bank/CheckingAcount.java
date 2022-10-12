@@ -2,25 +2,32 @@ package com.mybank.domain.Proy003_bank;
 
 public class CheckingAcount extends Account {
 
-	private double creditoPermitido;
+	private double creditoPermitido;	
+	
 
 	public CheckingAcount(double balance, double creditoPermitido) {
 		super(balance);
-		this.creditoPermitido = creditoPermitido;
+		this.creditoPermitido = this.creditoPermitido;
 	}
 
 	public CheckingAcount(double balance) {
-		this(balance, 1000.0);
+		this(balance, 500.0);
 	}
 	
+	@Override
 	public boolean withdraw(double amt) {
-		
-		if(amt > this.getBalance() + this.creditoPermitido) {
-			return false;
-		}else {
+		boolean resultado = true;
+		if(this.balance < amt) {
+			double credito = amt - this.balance;
+			if(creditoPermitido < credito) {
+				resultado = false;
+				
+			}else {
 			balance -= amt;
-			return true;
+			resultado =  true;
+			}
 		}
+		return resultado;
 	}
 	
 	

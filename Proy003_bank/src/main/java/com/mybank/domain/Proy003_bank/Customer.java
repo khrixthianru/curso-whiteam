@@ -5,7 +5,7 @@ public class Customer {
 	private String firstName;
 	private String lastName;
 	private Account[] cuentas;
-	private int numeroCuentas;
+	private int intNumeroCuentas;
 	
 	public Customer(String firstName, String lastName, Account[] cuentas) {
 		super();
@@ -19,6 +19,14 @@ public class Customer {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.cuentas = new Account[10];
+	}
+	
+	public int getIntNumeroCuentas() {
+		return intNumeroCuentas;
+	}
+	
+	public Account[] getArray() {
+		return cuentas;
 	}
 	
 	public String getFirstName() {
@@ -36,8 +44,8 @@ public class Customer {
 	
 	//metodos
 	public void anyadirCuenta(Account cuenta) {
-		this.numeroCuentas ++;
-		this.cuentas[this.numeroCuentas] = cuenta;
+		this.intNumeroCuentas ++;
+		this.cuentas[this.intNumeroCuentas] = cuenta;
 	}
 	
 	public void getAccount(int x) {
@@ -50,7 +58,7 @@ public class Customer {
 	public void numeroDeCuentas() {
 		System.out.println("El cliente: \n"
 				+ firstName + " " + lastName + "\n"
-				+ "tiene " + this.numeroCuentas + " cuentas.");
+				+ "tiene " + this.intNumeroCuentas + " cuentas.");
 	}
 	
 	

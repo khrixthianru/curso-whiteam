@@ -5,10 +5,10 @@ public class Account {
 
 	protected double balance;
 
-	public Account(double balance) {
-		super();
+	protected Account(double balance) {
 		this.balance = balance;
 	}
+	
 	
 	public double getBalance() {
 		return balance;

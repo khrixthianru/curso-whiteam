@@ -35,7 +35,7 @@ public class TestBanking {
 		
 		pintarClientes(b);
 		
-		//practika 6-1
+		//practika 6-2
 		System.out.println("--------------------------------------------------------");
 		Customer c5 = new Customer("Fernandez", "Romero");
 		Account a5 = new Account(500);
@@ -44,6 +44,76 @@ public class TestBanking {
 		c5.anyadirCuenta(a51);
 		c5.getAccount(1);
 		c5.numeroDeCuentas();
+		
+			// pruebas customerReport de la practika 6-2
+		
+		Customer sj = new Customer("Simms", "Jane");
+		SavingAcount sa = new SavingAcount(500.0, 3);
+		CheckingAcount ca = new CheckingAcount(200.0);
+		sj.anyadirCuenta(sa);
+		sj.anyadirCuenta(ca);
+		
+		Customer bo = new Customer("Bryant", "Owen");
+		CheckingAcount caBO = new CheckingAcount(500.0, 0.0);
+		bo.anyadirCuenta(caBO);
+		
+		Customer st = new Customer("Soley", "Tim");
+		SavingAcount saST = new SavingAcount(1500.0, 1);
+		CheckingAcount caST = new CheckingAcount(500.0, 500.0);
+		st.anyadirCuenta(saST);
+		st.anyadirCuenta(caST);
+		
+		Customer sm = new Customer("Soley", "Maria");
+		
+		System.out.println("---------------------------------------------------------");
+		
+		testReport(sj);
+		testReport(bo);
+		testReport(st);
+		testReport(sm);
+		
+		//practica 6.1  he modificado los datos de las cuentas de los de la practica 6.2
+		System.out.println("jane smith");
+		sa.withdraw(150.0);
+		sa.deposit(22.5);
+		sa.withdraw(47.62);
+		sa.withdraw(400);
+		System.out.println(sa.getBalance());
+		System.out.println("-----------------------------------------");
+		
+		System.out.println("owen bryant");
+		caBO.withdraw(150.0);
+		caBO.deposit(22.5);
+		caBO.withdraw(47.62);
+		caBO.withdraw(400);
+		System.out.println(caBO.getBalance());
+		System.out.println("-----------------------------------------");
+		
+		System.out.println("tim soley");
+		caST.withdraw(150.0);
+		caST.deposit(22.5);
+		caST.withdraw(47.62);
+		caST.withdraw(400);
+		System.out.println(caST.getBalance());
+		System.out.println("-----------------------------------------");
+		
+		System.out.println("maria soley");
+		caST.deposit(150.0);
+		caST.withdraw(750.0);
+		System.out.println(caST.getBalance());
+		System.out.println("-----------------------------------------");
+		
+	}
+	
+	public static void testReport(Customer c) {
+		
+		int intNumCtas = c.getIntNumeroCuentas();	
+		c.numeroDeCuentas();
+		while(intNumCtas>0) {
+			c.getAccount(intNumCtas);
+			intNumCtas --;
+		}
+		System.out.println("-----------------------------------------------------------");
 		
 	}
 	
