@@ -7,25 +7,28 @@ public class CheckingAcount extends Account {
 
 	public CheckingAcount(double balance, double creditoPermitido) {
 		super(balance);
-		this.creditoPermitido = this.creditoPermitido;
+		this.creditoPermitido = creditoPermitido;
 	}
 
 	public CheckingAcount(double balance) {
-		this(balance, 500.0);
+		this(balance, 0.0);
 	}
 	
 	@Override
 	public boolean withdraw(double amt) {
 		boolean resultado = true;
 		if(this.balance < amt) {
-			double credito = amt - this.balance;
-			if(creditoPermitido < credito) {
+			double pideCredito = amt - this.balance;
+			if(pideCredito > this.creditoPermitido) {
 				resultado = false;
 				
 			}else {
-			balance -= amt;
-			resultado =  true;
+				balance = 0.0;
+				this.creditoPermitido -= pideCredito;						
+				resultado =  true;
 			}
+		}else {
+			balance -= amt;			
 		}
 		return resultado;
 	}

@@ -1,4 +1,7 @@
-package com.flota.dominio;
+package com.curso.modulo8.excepciones;
+
+import PractikaMod7AbstYImplem.Caja;
+import PractikaMod7AbstYImplem.CargaException;
 
 /**
  * 
@@ -11,7 +14,7 @@ package com.flota.dominio;
  *
  */
 
-public abstract class Vehiculo {
+public class VehiculoMejorado {
 
 	//atributos
 	private double cargaMaxima = 3000.0;
@@ -25,18 +28,18 @@ public abstract class Vehiculo {
 	
 	//constructores  crea el objeto reservando la memoria para guardar sus
 	// atributos y los inicializa xa ke el objeto sea consistente (preparado)
-	public Vehiculo(double cargaMaxima) {
+	public VehiculoMejorado(double cargaMaxima) {
 		super();
 		this.cargaMaxima = cargaMaxima;
 	}
 
-	public Vehiculo() {
+	public VehiculoMejorado() {
 		//validar matricula no null
 		// validar carga maxima > 0
 		super();
 	}
 	
-	public Vehiculo( String matricula, double cargaMaxima) {
+	public VehiculoMejorado( String matricula, double cargaMaxima) {
 		super();
 		this.cargaMaxima = cargaMaxima;
 		this.matricula = matricula;
@@ -78,15 +81,16 @@ public abstract class Vehiculo {
 	 * 
 	 * throws RuntimeException el peso de la caja no es valido o supera la tara
 	 */
-	public void cargarCaja(double peso) {
+	public void cargarCaja(double peso) throws CargaException {
 		//validar que el peso es > 0
 		if(peso <=0) {
-			throw new RuntimeException("La caja debe pesar algo.");
+			throw new CargaException("La caja debe pesar algo.",0);
 		}
 		
 		//validar que no se pasan de la carga maxima
 		if (peso + cargaActual > cargaMaxima) {
-			throw new RuntimeException("No caben mas cajas.");			
+			double exceso =  (peso + cargaActual) - cargaMaxima ;
+			throw new CargaException("No caben mas cajas.",0);			
 		}
 		
 		this.cargaActual += peso;
@@ -94,7 +98,7 @@ public abstract class Vehiculo {
 	}
 	
 	//sobrecargo el metodo anterior con un objeto caja
-	public void cargarCaja(Caja c1) {
+	public void cargarCaja(Caja c1) throws CargaException {
 		cargarCaja(c1.getPeso());
 	}
 
@@ -107,7 +111,7 @@ public abstract class Vehiculo {
 //	}
 	
 	//devolver el consumo de cada vehiculo
-	public  abstract double consumoFuel();
+	//public  abstract double consumoFuel();
 
 	
 }
