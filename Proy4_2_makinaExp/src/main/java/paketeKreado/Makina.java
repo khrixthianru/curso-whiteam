@@ -13,6 +13,7 @@ public class Makina {
 	static ArrayList<Moneda> m1 = new ArrayList<Moneda>();
 	private int refrescosVendidos;
 	private double caja;
+	private double vuelta;
 	
 	//constructor
 	public Makina(ArrayList<Refresco> r1, ArrayList<Moneda> m1) {
@@ -87,17 +88,14 @@ public class Makina {
 			m1.add(m5);
 	}
 	
-	public String venderRefrescoSiHay(String bebida, double paga) {
-		double vuelta = 0;	
-		String respAuxiliar = vuelta + "";
+	public double venderRefrescoSiHay(String bebida, double paga) {
+		vuelta = 0;	
 		
 		for(int x=0;x<r1.size();x++) {
 			String sabor = r1.get(x).getSabor();
 			 if(sabor == bebida && r1.get(x).getPrecio()> paga) {
-				 //aki poner un throw new RuntimeExpection("Importe insuficiente");
 				 System.out.println("Importe insuficiente");
 				 throw new RuntimeErrorException(null, "Importe insuficiente");
-				//  respAuxiliar = "Importe insuficiente";
 			  }else if(r1.get(x).getSabor() == bebida && r1.get(x).getStock()<1) {
 				  System.out.println("Producto agotado");
 					 throw new RuntimeErrorException(null, "Producto agotado");
@@ -106,12 +104,11 @@ public class Makina {
 				  caja += paga;
 				  vuelta = (paga * 100) - (r1.get(x).getPrecio() * 100);
 				  r1.get(x).setStock(r1.get(x).getStock()-1);
-				  respAuxiliar = vuelta + "";
 			  }
 			  
 			}
 		//ke devuelva las vueltas en double
-		return respAuxiliar;
+		return vuelta;
 	}
 	
 	//este me hace petar la vuelta, me devuelve negativo
@@ -127,39 +124,34 @@ public class Makina {
 		return resp;
 	}
 	
-	public String devolverVuelta(String vueltaReal) {
-		double vuelta = 0;
-		double vueltaAuxiliar = 0;
-		vuelta = Double.parseDouble(vueltaReal);
-		vueltaAuxiliar = vuelta;
+	public String devolverVuelta(double x) {
+		vuelta = x;
 		
 		for(int i=m1.size()-1;i>=0;i--) {
-			if(m1.get(i).getCantidad()<=0) {
-				System.out.println("--------------------------\nNO DEVUELVE MONEDAS DE " + m1.get(i).getMoneda() +
+			if(m1.get(i).getCantidad()<=0) {				
+				throw new RuntimeErrorException(null, "--------------------------\nNO DEVUELVE MONEDAS DE " + m1.get(i).getMoneda() +
 						"\n--------------------------");
+//				System.out.println("--------------------------\nNO DEVUELVE MONEDAS DE " + m1.get(i).getMoneda() +
+//						"\n--------------------------");
 			}
 			// en el if de abajo ponia el metodo de comprobar hay una moneda == null
 	//		if(vuelta>0) {
 				if(m1.get(i).getMoneda() == 100 && vuelta >= 100 && m1.get(i).getCantidad() > 0) {
 					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
-					vuelta -= 100;
 				}else if(m1.get(i).getMoneda() == 50 && vuelta >= 50.0 && m1.get(i).getCantidad() > 0) {
 					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
-					vuelta -= 50;
 				}else if(m1.get(i).getMoneda() == 20 && vuelta >= 20 && m1.get(i).getCantidad() > 0) {
 					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
-					vuelta -= 20;
 				}else if(m1.get(i).getMoneda() == 10 && vuelta >= 10.0 && m1.get(i).getCantidad() > 0) {
 					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
-					vuelta -= 10;
 				}else if(m1.get(i).getMoneda() == 5 && vuelta >= 5 && m1.get(i).getCantidad() > 0)  {
 					m1.get(i).setCantidad(m1.get(i).getCantidad()-1);
-					vuelta -= 5;
 				}
 		//	}
 		}
 		
-		return "La vuelta es de " + (vueltaAuxiliar / 100) + " Euros.";
+		return "La vuelta es de " + (vuelta / 100) + " Euros.";
+		
 	}
 	
 	public String informeRefrescos() {

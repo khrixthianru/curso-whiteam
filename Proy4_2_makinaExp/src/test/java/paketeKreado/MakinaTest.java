@@ -32,12 +32,12 @@ public class MakinaTest {
 		// fail("Not yet implemented");
 		
 		//datos entrada
-		Makina m = new Makina();
+		Makina ma = new Makina();
 		
 		// resultado esperado
 		
 		// resultado real
-		String resultado = m.comprobarHayUnaMoneda(20);
+		String resultado = ma.comprobarHayUnaMoneda(20);
 		// comparacion
 		if(resultado != null) System.out.println("OK");
 	}
@@ -49,16 +49,17 @@ public class MakinaTest {
 		//datos entrada
 		Makina m = new Makina();
 		String bebida = "Naranja";
-		double paga = 1;
+		double paga = 2;
 		
 		// resultado esperado
-		String espero = "Producto agotado";
+		String espero = "0.0";
 		
 		// resultado real
-		String resul = m.venderRefrescoSiHay(bebida, paga);
+		double resulaux = m.venderRefrescoSiHay(bebida, paga);
+		String resul = resulaux + "";
 		
 		// comparacion
-		if(espero == resul) System.out.println("OK");
+		if(espero.equals(resul)) System.out.println("OK, test producto agotado");
 	}
 	
 	@Test
@@ -71,16 +72,15 @@ public class MakinaTest {
 		double paga = 1;
 		
 		// resultado esperado
-		String espero = "Importe insuficiente";
+		String espero = "0.0";
 		
 		// resultado real
-		String resul = m.venderRefrescoSiHay(bebida, paga);
+		double resulaux = m.venderRefrescoSiHay(bebida, paga);
+		String resul = resulaux + "";
 		
 		// comparacion
-		if(espero == resul) {
+		if(espero.equals(resul)) {
 			System.out.println("OK, importe insuficiente");
-		}else {
-			System.out.println("importe suficiente");
 		}
 	}
 
