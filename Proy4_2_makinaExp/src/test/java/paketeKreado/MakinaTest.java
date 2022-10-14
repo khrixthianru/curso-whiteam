@@ -79,6 +79,8 @@ public class MakinaTest {
 		// comparacion
 		if(espero == resul) {
 			System.out.println("OK, importe insuficiente");
+		}else {
+			System.out.println("importe suficiente");
 		}
 	}
 

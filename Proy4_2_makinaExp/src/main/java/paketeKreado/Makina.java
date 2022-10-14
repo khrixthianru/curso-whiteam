@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.management.RuntimeErrorException;
+
 public class Makina {
 	
 	static ArrayList<Refresco> r1 = new ArrayList<Refresco>();
@@ -93,11 +95,12 @@ public class Makina {
 			String sabor = r1.get(x).getSabor();
 			 if(sabor == bebida && r1.get(x).getPrecio()> paga) {
 				 //aki poner un throw new RuntimeExpection("Importe insuficiente");
-				  System.out.println("Importe insuficiente");
-				  respAuxiliar = "Importe insuficiente";
+				 System.out.println("Importe insuficiente");
+				 throw new RuntimeErrorException(null, "Importe insuficiente");
+				//  respAuxiliar = "Importe insuficiente";
 			  }else if(r1.get(x).getSabor() == bebida && r1.get(x).getStock()<1) {
 				  System.out.println("Producto agotado");
-				  respAuxiliar = "Producto agotado";
+					 throw new RuntimeErrorException(null, "Producto agotado");
 			  }else if(r1.get(x).getSabor() == bebida && r1.get(x).getStock()>1) {
 				  refrescosVendidos ++;
 				  caja += paga;
