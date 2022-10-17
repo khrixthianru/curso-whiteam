@@ -1,12 +1,16 @@
 package com.curso.mercado.entidades;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Producto {
+public class Producto implements Serializable {
 	
 	private Integer idProducto;
 	private String descripcion;
 	private double precio;
+	private int stock=5;
+	
+	
 	public Producto(Integer idProducto, String descripcion, double precio) {
 		super();
 		this.idProducto = idProducto;
@@ -16,6 +20,14 @@ public class Producto {
 	public Producto() {
 		super();
 	}
+	
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	
 	public Integer getIdProducto() {
 		return idProducto;
 	}

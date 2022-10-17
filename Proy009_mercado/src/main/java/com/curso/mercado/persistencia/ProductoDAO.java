@@ -1,10 +1,20 @@
 package com.curso.mercado.persistencia;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.curso.mercado.db.BDMercado;
 import com.curso.mercado.entidades.Producto;
+/**
+ * DAO Data Access Object
+ * 
+ * @author alumno
+ *
+ */
 
 public class ProductoDAO implements GenericDAO<Producto> {
+	
+	private BDMercado bdm = new BDMercado();
 
 	@Override
 	public void add(Producto entidad) {
@@ -14,8 +24,12 @@ public class ProductoDAO implements GenericDAO<Producto> {
 
 	@Override
 	public List<Producto> getAll() {
-		// TODO crear y devolver una lista de productos
-		return null;
+		return new ArrayList<>(BDMercado.getAll());
+	}
+
+	@Override
+	public Producto getById(int id) {
+		return BDMercado.get(id);
 	}
 
 }
