@@ -20,7 +20,7 @@ public class VentasService {
 		 * si existe y hay stock resta uno
 		 * si existe pero no hay stock salta exception
 		 */
-		 Producto pAVender = new productoDAO.getById(id);
+		 Producto pAVender = productoDAO.getById(id);
 		 
 		if(productoDAO.getById(id) == null) {
 			throw new VentasException("Error en la venta no existe el producto con id: "+id);
@@ -29,10 +29,13 @@ public class VentasService {
 			throw new VentasException("Error en la venta no queda stock");
 		}
 		
+		// resto la cantidad al stock actual
+		pAVender.setStock(pAVender.getStock() -  cantidad);
+		
 	}
 	
 	public List<Producto> listaProductoVenta(){
-		return null;
+		return productoDAO.getAll();
 	}
 	
 	

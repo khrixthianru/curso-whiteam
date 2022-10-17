@@ -49,7 +49,7 @@ public class BDMercadoTest {
 		
 		Collection<Producto> lista = BDMercado.getAll();
 		
-		// assertEquals(BDMercado.getContador(), contadorEspero);
+		 assertEquals(lista.size(), 4);
 	}
 	
 	@Test
